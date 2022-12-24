@@ -30,22 +30,24 @@ public class Main {
         bus2.printTransport();
         bus3.printTransport();
 
-        System.out.println();
-        //Car.isDigitVehicleRegistrNumber();
-       // Car.Insurance().checkExppireDate();
-       // Car.Insurance().checkNumber();
+
+        System.out.println(getKey().isKeylessCarAccess() ? "безключевой доступ" : "ключевой доступ" +
+                ", " + (getKey().isRemoteStart() ? "удаленный запуск" : "обычный запуск") +
+                ", номер страховки: " + getInsurance().getNumber() +
+                ", стоимость страховки: " + getInsurance().getCost() +
+                ", срок действия страховки: " + getInsurance().getExppireDate());
     }
 
-        public static void printInfo() {
-
-            System.out.println(getKey().isKeylessCarAccess() ? "безключевой доступ" : "ключевой доступ" +
-                    ", " + (getKey().isRemoteStart() ? "удаленный запуск" : "обычный запуск") +
-                    ", номер страховки: " + getInsurance().getNumber() +
-                    ", стоимость страховки: " + getInsurance().getCost() +
-                    ", срок действия страховки: " + getInsurance().getExppireDate());
-        }
 
 }
+
+}
+
+
+
+
+
+
 
 
 
