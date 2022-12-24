@@ -11,11 +11,11 @@ public class Transport {
 
     // конструктор
     public Transport(String brand,
-                     String model,
-                     String productionCountry,
-                     int productionYear,
-                     String color,
-                     int maximumSpeed) {
+               String model,
+               String productionCountry,
+               int productionYear,
+               String color,
+               int maximumSpeed) {
 
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
@@ -80,6 +80,14 @@ public class Transport {
         } else {
             this.maximumSpeed = 170;
         }
+    }
+    public void printTransport() {
+        System.out.println("марка автобуса: " + this.brand +
+                ", модель автобуса: " + this.model +
+                ", год выпуска автобуса: " + this.productionYear +
+                ", страна производства: " + this.productionCountry +
+                ", цвет кузова: " + this.color +
+                ", максимальная скорость передвижения: " + maximumSpeed);
     }
 
     }

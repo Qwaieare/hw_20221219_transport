@@ -16,7 +16,7 @@ import java.util.GregorianCalendar;
         private String vehicleRegistrNumber; // регистрационный номер
         private boolean summerOrWinterTires; // признак «Летняя» или «Зимняя резина»
         private Key key;
-        private Insurance insurance;
+        private static Insurance insurance;
 
        // конструктор класса
         public Car(String brand,
@@ -27,14 +27,12 @@ import java.util.GregorianCalendar;
                    String color,
                    double engineVolume,
                    String transmission,
-                  String vehicleRegistrNumber,
-                  int numberOfSeats,
-                   int maximumSpeed)
-        {
-            super (brand, model, productionCountry, productionYear, color, maximumSpeed);
+                   String vehicleRegistrNumber,
+                   int numberOfSeats,
+                   int maximumSpeed)  {
+            super(brand, model, productionCountry, productionYear, color, maximumSpeed);
 
 
-                // this(new Key(), new Insurance());
                 this.engineVolume = engineVolume;
                 this.transmission = transmission;
                 this.vehicleRegistrNumber = vehicleRegistrNumber;
@@ -50,18 +48,20 @@ import java.util.GregorianCalendar;
                 } else {
                     this.numberOfSeats = numberOfSeats;
                 }
-                if (key == null) {
-                    this.key = new Key();
-                } else {
-                    this.key = key;
-                }
-                if (insurance == null) {
-                    this.insurance = new Insurance();
-                } else {
-                    this.insurance = insurance;
-                }
+
+
+            if (key == null) {
+                this.key = new Key();
+            } else {
+                this.key = key;
+            }
+            if (insurance == null) {
+                this.insurance = new Insurance();
+            } else {
+                this.insurance = insurance;
             }
 
+        }
 
         // геттеры для неизменяющихся параметров
 
@@ -114,38 +114,22 @@ import java.util.GregorianCalendar;
             this.summerOrWinterTires = summerOrWinterTires;
         }
 
-
-       // геттеры и сеттеры вложенного класа
-        public Key getKey() {
-            return key;
-        }
-        public void setKey(Key key){
-            this.key = key;
-        }
-
-        // геттеры и сеттеры встроенного класса
-        public Insurance getInsurance() {
-            return insurance;
-        }
-
-        public void setInsurance(Insurance insurance) {
-            this.insurance = insurance;
-        }
-
-
-        // метод проверки смены автопокрышек по сезону
-        public static void changeSummerOrWinterTires() {
-
-            GregorianCalendar calendar;
-            calendar = new GregorianCalendar(2022, Calendar.DECEMBER, 18);
-            int month = calendar.get(Calendar.MONTH);
-            boolean summerOrWinterTires = (month > 11 || month <= 3);
-            if (summerOrWinterTires != summerOrWinterTires) {
-                System.out.println("зимняя резина");
-            } else {
-                System.out.println("летняя резина ");
+            // геттеры и сеттеры вложенного класа
+            public Key getKey () {
+                return key;
             }
-        }
+            public void setKey (Key key){
+                this.key = key;
+            }
+
+            // геттеры и сеттеры встроенного класса
+            public Insurance getInsurance() {
+                return insurance;
+            }
+
+            public void setInsurance (Insurance insurance){
+                this.insurance = insurance;
+            }
 
         // метод проверки регистрационного номера на корретность
         public boolean isDigitVehicleRegistrNumber() {
@@ -167,11 +151,26 @@ import java.util.GregorianCalendar;
             return true;
         }
 
+        // метод проверки смены автопокрышек по сезону
+        public static void changeSummerOrWinterTires() {
+
+            GregorianCalendar calendar;
+            calendar = new GregorianCalendar(2022, Calendar.DECEMBER, 18);
+            int month = calendar.get(Calendar.MONTH);
+            boolean summerOrWinterTires = (month > 11 || month <= 3);
+            if (summerOrWinterTires != summerOrWinterTires) {
+                System.out.println("зимняя резина");
+            } else {
+                System.out.println("летняя резина ");
+            }
+        }
 
         // вложенный класс
         public static class Key {
             private final boolean remoteStart; // удаленный запуск двигателя
             private final boolean keylessCarAccess; // бесключевой доступ
+
+
 
             // конструктор вложенного класса с параметрами
             public Key(boolean remoteStart, boolean keylessCarAccess) {
@@ -183,8 +182,9 @@ import java.util.GregorianCalendar;
                 this(false, false);
             }
 
+
             // геттеры вложенного класса
-            public boolean isRemoteStart() {
+            public  boolean isRemoteStart() {
                 return remoteStart;
             }
             public boolean isKeylessCarAccess() {
