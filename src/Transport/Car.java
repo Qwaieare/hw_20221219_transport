@@ -15,8 +15,8 @@ import java.util.GregorianCalendar;
         private String transmission; // коробка передачи
         private String vehicleRegistrNumber; // регистрационный номер
         private boolean summerOrWinterTires; // признак «Летняя» или «Зимняя резина»
-        private Key key;
-        private Insurance insurance;
+        private static Key key;
+        private static Insurance insurance;
 
        // конструктор класса
         public Car(String brand,
@@ -29,8 +29,11 @@ import java.util.GregorianCalendar;
                    String transmission,
                    String vehicleRegistrNumber,
                    int numberOfSeats,
-                   int maximumSpeed)  {
+                   int maximumSpeed,
+                   Key key, Insurance insurance)  {
+
             super(brand, model, productionCountry, productionYear, color, maximumSpeed);
+
 
                 this.engineVolume = engineVolume;
                 this.transmission = transmission;
@@ -47,25 +50,6 @@ import java.util.GregorianCalendar;
                 } else {
                     this.numberOfSeats = numberOfSeats;
                 }
-              }
-
-        public Car(String carBodyType,
-                   int numberOfSeats,
-                   double engineVolume,
-                   String transmission,
-                   String vehicleRegistrNumber,
-                   boolean summerOrWinterTires,
-                    Key(), Insurance()) {
-
-            this (carBodyType,
-                    numberOfSeats,
-                    engineVolume,
-                    transmission,
-                    vehicleRegistrNumber,
-                    summerOrWinterTires,
-                    Key(), Insurance());
-
-
             if (key == null) {
                 this.key = new Key();
             } else {
@@ -76,12 +60,9 @@ import java.util.GregorianCalendar;
             } else {
                 this.insurance = insurance;
             }
-
         }
 
-
         // геттеры для неизменяющихся параметров
-
         public String getCarBodyType() {
             return carBodyType;
         }
@@ -91,7 +72,6 @@ import java.util.GregorianCalendar;
 
 
         // Созданы геттеры и сеттеры для изменяющихся параметров
-
         public double getEngineVolume() {
             return engineVolume;
         }
@@ -133,7 +113,7 @@ import java.util.GregorianCalendar;
         }
 
             // геттеры и сеттеры вложенного класа
-            public Key getKey () {
+            public static Key getKey() {
                 return key;
             }
             public void setKey (Key key){
@@ -141,7 +121,7 @@ import java.util.GregorianCalendar;
             }
 
             // геттеры и сеттеры встроенного класса
-            public Insurance getInsurance() {
+            public static Insurance getInsurance() {
                 return insurance;
             }
 
